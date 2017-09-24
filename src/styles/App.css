@@ -1,0 +1,18 @@
+* {
+  /* this will be header and nav fonts */
+  font-family: 'Libre Franklin', sans-serif;
+  /* this will be paragraph and everything non heading wise. */
+  /* font-family: 'Lato', sans-serif; */
+}
+
+h1, h2, h3, h4, h5, h6, .title {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.navbar {
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+p {
+  font-family: 'Lato', sans-serif;
+}
