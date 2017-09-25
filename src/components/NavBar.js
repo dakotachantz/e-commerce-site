@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 export default class NavBar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-toggleable-md navbar-light bg-faded fixed-top" style={{ zIndex: 1035, width: '100%', justifyContent: 'center' }}>
+            <nav className="navbar navbar-toggleable-md navbar-light bg-faded fixedtotop">
                 <button style={{ top: '1rem' }} className="navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

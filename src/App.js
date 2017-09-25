@@ -24,7 +24,7 @@ class App extends Component {
               <Route path='/:category/:id' component={ProductDetail} />
             </Switch>
           </BaseLayout>
-        </BrowserRouter >
+        </BrowserRouter>
       </div>
     )
   }

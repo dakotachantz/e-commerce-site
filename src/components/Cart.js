@@ -21,11 +21,11 @@ export default class Cart extends Component {
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <a href="#">
+                                            <Link to="#">
                                                 <img src="img/detailsquare.jpg" alt="White Tee" />
-                                            </a>
+                                            </Link>
                                         </td>
-                                        <td><a href="#">White Tee</a>
+                                        <td><Link to="#">White Tee</Link>
                                         </td>
                                         <td>
                                             <select className="form-control">
@@ -41,22 +41,32 @@ export default class Cart extends Component {
                                             </select>
                                         </td>
                                         <td>$24.99</td>
-                                        <td><a href="#"><i className="fa fa-trash-o"></i></a>
+                                        <td><Link to="#"><i className="fa fa-trash-o"></i></Link>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <a href="#">
+                                            <Link to="#">
                                                 <img src="img/basketsquare.jpg" alt="Black Tee" />
-                                            </a>
+                                            </Link>
                                         </td>
                                         <td><Link to="">Black Tee</Link>
                                         </td>
                                         <td>
-                                            <input type="number" value="1" className="form-control" />
+                                            <select className="form-control">
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                            </select>
                                         </td>
                                         <td>$24.99</td>
-                                        <td><a href="#"><i className="fa fa-trash-o"></i></a>
+                                        <td><Link to="#"><i className="fa fa-trash-o"></i></Link>
                                         </td>
                                     </tr>
                                 </tbody>

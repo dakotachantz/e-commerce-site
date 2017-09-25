@@ -13,7 +13,6 @@ export default class ProductList extends Component {
     render() {
         let match = this.props.match;
         const endpoint = this.props.match.params.category;
-        //map through our array and create a NavLink for each object inside
         let foundClothes = clothes[endpoint].map((item, index) => {
             return (
                 <div className="card clothingItem" key={item.id}>
@@ -30,14 +29,16 @@ export default class ProductList extends Component {
         }
         )
         return (
-            <div className="masthead" style={{ flexDirection: 'column', height: '100%' }}>
-                <div className="container">
-                    <div className="intro-text">
-                        <div className="intro-heading">{endpoint}</div>
+            <div className="masthead product-masthead parallax" style={{ flexDirection: 'column' }}>
+                <div className="container main-container">
+                    <div className="container" style={{ marginTop: '6em' }}>
+                        <div className="intro-text">
+                            <div className="intro-heading" style={{ marginTop: '.5em' }}>{endpoint}</div>
+                        </div>
                     </div>
-                </div>
-                <div className="container clothingContainer">
-                    {foundClothes}
+                    <div className="container clothingContainer">
+                        {foundClothes}
+                    </div>
                 </div>
             </div>
         )
