@@ -90,6 +90,7 @@ body {
   -o-background-size: cover;
   background-size: cover;
   height: 92vh;
+  min-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -172,11 +173,17 @@ body {
 a {
   text-transform: uppercase;
   color: #333;
+  text-decoration: none !important;
 }
 
-a:hover {
-  color: rgba(51, 51, 51, 0.8);
+a:hover a::selection a:active a:visited {
+  color: rgba(51, 51, 51, 0.8) !important;
 }
+
+
+/* .card-subtitle:hover .card-subtitle:visited {
+  color: rgba(51, 51, 51, 0.8) !important;
+} */
 
 #basket {
   margin: 2em auto;
@@ -196,12 +203,34 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0em;
+  margin-top: 60px;
 }
 
 .card {
   width: 100%;
   margin: .5em;
+}
+
+.card-header {
+  background-color: rgba(51, 51, 51, .9);
+  color: #F7F7F7;
+}
+
+.clothingItem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+}
+
+.clothingContainer {
+  margin: 1em auto;
+}
+
+#storecollapse {
+  z-index: 1035;
+  width: 100%;
+  top: 72px;
 }
 
 @media (min-width:992px) {
@@ -211,5 +240,11 @@ h3 {
   #basket {
     flex-direction: row;
     align-items: flex-start;
+  }
+  .clothingContainer {
+    display: flex;
+  }
+  .clothingItem {
+    margin: 1em;
   }
 }

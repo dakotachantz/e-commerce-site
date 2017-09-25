@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 export default class SecondaryNav extends Component {
     render() {
         return (
-            <div className="collapse" id="storeCollapse" style={{ position: 'relative', zIndex: 1035, width: '100%' }}>
+            <div className="collapse fixed-top" id="storeCollapse" style={{ zIndex: 1035, width: '100%', top: 72 }}>
                 <nav style={{ backgroundColor: 'rgba(51, 51, 51, .9)' }} className="navbar navbar-toggleable-md navbar-light">
                     <div className="" id="navbarNav">
                         <ul style={{ color: '#fff' }} className="navbar-nav">
