@@ -1,12 +1,58 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import clothes from "../data/data";
+// import clothes from "../data/data";
+let cartTotal;
 export default class Cart extends Component {
+  componentWillMount() {
+    let totalsArray = this.props.cartData.map(item => {
+      let total = 0;
+      return (total += item.price);
+    });
+    cartTotal = totalsArray.reduce((a, b) => a + b, 0);
+  }
+
   render() {
+    console.log(this.props);
+    let cartItems = this.props.cartData.map((item, index) => {
+      return (
+        <tr key={item.id}>
+          <td>
+            <Link to="#">
+              <img style={{ height: 100 }} src={item.img} alt="White Tee" />
+            </Link>
+          </td>
+          <td>
+            <Link to="#">{item.productName}</Link>
+          </td>
+          <td>{item.size}</td>
+          <td>
+            <select className="form-control">
+              <option default value="1">
+                1
+              </option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </td>
+          <td>${item.price}</td>
+          <td>
+            <Link to="#">
+              <i className="fa fa-trash-o" />
+            </Link>
+          </td>
+        </tr>
+      );
+    });
     return (
-      // TODO: add in real data from not hard coded.
+      // TODO: add in real data that is not hard coded.
       <div className="container cart-container">
-        <div className="" id="basket">
+        <div id="basket">
           <div style={{ display: "flex", flex: 1 }} className="card">
             <div className="card-header">
               <h3>Your Cart</h3>
@@ -21,152 +67,7 @@ export default class Cart extends Component {
                     <th colSpan="2">Price</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <Link to="#">
-                        <img
-                          style={{ height: 150, width: 150 }}
-                          src={clothes.tops[0].img}
-                          alt="White Tee"
-                        />
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to="#">{clothes.tops[0].productName}</Link>
-                    </td>
-                    <td>{clothes.tops[0].size[0]}</td>
-                    <td>
-                      <select className="form-control">
-                        <option default value="1">
-                          1
-                        </option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                      </select>
-                    </td>
-                    <td>${clothes.tops[0].price}</td>
-                    <td>
-                      <Link to="#">
-                        <i className="fa fa-trash-o" />
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <Link to="#">
-                        <img
-                          style={{ height: 150, width: 150 }}
-                          src={clothes.tops[2].img}
-                          alt="White Tee"
-                        />
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to="#">{clothes.tops[2].productName}</Link>
-                    </td>
-                    <td>{clothes.tops[2].size[0]}</td>
-                    <td>
-                      <select className="form-control">
-                        <option default value="1">
-                          1
-                        </option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                      </select>
-                    </td>
-                    <td>${clothes.tops[2].price}</td>
-                    <td>
-                      <Link to="#">
-                        <i className="fa fa-trash-o" />
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <Link to="#">
-                        <img
-                          style={{ height: 150, width: 150 }}
-                          src={clothes.bottoms[2].img}
-                          alt="White Tee"
-                        />
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to="#">{clothes.bottoms[2].productName}</Link>
-                    </td>
-                    <td>{clothes.bottoms[2].size[0]}</td>
-                    <td>
-                      <select className="form-control">
-                        <option default value="1">
-                          1
-                        </option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                      </select>
-                    </td>
-                    <td>${clothes.bottoms[2].price}</td>
-                    <td>
-                      <Link to="#">
-                        <i className="fa fa-trash-o" />
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <Link to="#">
-                        <img
-                          style={{ height: 150, width: 150 }}
-                          src={clothes.outerwear[0].img}
-                          alt="White Tee"
-                        />
-                      </Link>
-                    </td>
-                    <td>
-                      <Link to="#">{clothes.outerwear[0].productName}</Link>
-                    </td>
-                    <td>{clothes.outerwear[0].size[0]}</td>
-                    <td>
-                      <select className="form-control">
-                        <option default value="1">
-                          1
-                        </option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                      </select>
-                    </td>
-                    <td>${clothes.outerwear[0].price}</td>
-                    <td>
-                      <Link to="#">
-                        <i className="fa fa-trash-o" />
-                      </Link>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody>{cartItems}</tbody>
               </table>
             </div>
             {/* <!-- /.table-responsive --> */}
@@ -187,7 +88,7 @@ export default class Cart extends Component {
                   <tbody>
                     <tr>
                       <td>Subtotal</td>
-                      <th>$555</th>
+                      <th>${cartTotal}</th>
                     </tr>
                     <tr>
                       <td>Tax</td>
@@ -199,7 +100,7 @@ export default class Cart extends Component {
                     </tr>
                     <tr className="total">
                       <td>Total</td>
-                      <th>$555</th>
+                      <th>${cartTotal}</th>
                     </tr>
                   </tbody>
                 </table>

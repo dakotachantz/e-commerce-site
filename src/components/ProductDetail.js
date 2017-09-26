@@ -1,94 +1,126 @@
 import React, { Component } from "react";
-import _ from "lodash";
+// import _ from "lodash";
 import clothes from "../data/data";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 
 export default class ProductDetail extends Component {
-  render() {
-    let match = this.props.match;
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+  addToCart = e => {
+    e.preventDefault();
     let { id, category } = this.props.match.params;
-    let foundItem = clothes[category].find(item => item.id === parseInt(id));
+    // eslint-disable-next-line
+    const foundItem = clothes[category].find(item => item.id === parseInt(id));
+    this.setState({ item: this.state }, () => {
+      console.log(this.state);
+    });
+  };
+
+  render() {
+    let { id, category } = this.props.match.params;
+    // eslint-disable-next-line
+    const foundItem = clothes[category].find(item => item.id === parseInt(id));
     console.log("foundItem: ", foundItem);
     return (
       <div
         className="clothingItem"
         key={foundItem.id}
-        style={{ marginTop: "6em" }}
+        style={{ marginTop: "7em" }}
       >
-        <span style={{ display: "flex", flexDirection: "row", width: "100%" }}>
+        <span className="clothingItemContainer">
           <img
+            className="productDetailImg"
             src={foundItem.img}
             alt={foundItem.productName}
             style={{
-              height: 350,
-              width: 350,
               margin: "0 auto",
               alignSelf: "center"
             }}
-          />{" "}
-          <hr />
-          <div
-            style={{
-              display: "flex",
-              width: "25%",
-              flexDirection: "column",
-              padding: "1em",
-              margin: "0 auto"
-            }}
-          >
-            <p
-              style={{ textTransform: "none", paddingTop: ".5em" }}
-              className="card-subtitle"
-            >
-              &nbsp;&nbsp;{foundItem.productName}, {foundItem.color}
-              {foundItem.fit}
-              {foundItem.style}
-            </p>
-            <span style={{ marginLeft: ".4em" }} className="text-muted">
-              ${foundItem.price}
-            </span>
-            <br />
-            <span>
-              {" "}
-              Size:
-              <select className="form-control" name="" id="">
-                {foundItem.size.map((size, index) => {
-                  return (
-                    <option key={size} value={size}>
-                      {size}
-                    </option>
-                  );
-                })}
-              </select>
-            </span>
-            <span>
-              {" "}
-              <label>Qty:</label>
-              <select className="form-control">
-                Qty:
-                <option default value="1">
-                  1
-                </option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-              </select>
-            </span>
-            <button
-              style={{
-                width: "90%",
-                fontFamily: "Lato",
-                background: "#3CBC8D"
-              }}
-              className="btn btn-primary"
-            >
-              ADD TO CART
-            </button>
+          />
+          <div className="addToCartForm">
+            <form onSubmit={this.addToCart}>
+              <p
+                style={{
+                  textTransform: "none",
+                  paddingTop: ".5em",
+                  minWidth: "50em"
+                }}
+                className="card-subtitle"
+              >
+                {foundItem.productName}, {foundItem.color}
+                {foundItem.fit}
+                {foundItem.style}
+              </p>
+              <span className="text-muted">${foundItem.price}</span>
+              <br />
+              <input
+                /* onChange={this.handleInputChange} */
+                type="text"
+                name="productName"
+                value={foundItem.productName}
+              />
+              <input
+                /* onChange={this.handleInputChange} */
+                type="text"
+                name="price"
+                value={foundItem.price}
+              />
+              <span>
+                <label>Size:</label>
+                <select
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  name="size"
+                  value={this.state.size}
+                >
+                  {foundItem.size.map((selectedSize, index) => {
+                    return (
+                      <option key={selectedSize} value={selectedSize}>
+                        {selectedSize}
+                      </option>
+                    );
+                  })}
+                </select>
+              </span>
+              <br />
+              <span>
+                <label>Qty:</label>
+                <select
+                  onChange={this.handleInputChange}
+                  className="form-control"
+                  name="quantity"
+                  value={this.state.quantity}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+              </span>
+              <button
+                style={{
+                  width: "100%",
+                  fontFamily: "Lato",
+                  margin: "1em 0"
+                }}
+                className="btn btn-primary"
+              >
+                ADD TO CART
+              </button>
+            </form>
           </div>
         </span>
       </div>

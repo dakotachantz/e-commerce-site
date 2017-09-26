@@ -1,6 +1,6 @@
 * {
   /* this will be header and nav fonts */
-  font-family: 'Libre Franklin', sans-serif;
+  font-family: "Libre Franklin", sans-serif;
   /* this will be paragraph and everything non heading wise. */
   /* font-family: 'Lato', sans-serif; */
 }
@@ -9,29 +9,35 @@ body {
   min-width: 350px;
 }
 
-h1, h2, h3, h4, h5, h6, .title {
-  font-family: 'Libre Franklin', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+  font-family: "Libre Franklin", sans-serif;
 }
 
 .navbar {
-  font-family: 'Libre Franklin', sans-serif;
-  color: #F7F7F7;
+  font-family: "Libre Franklin", sans-serif;
+  color: #f7f7f7;
 }
 
 p {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .secNavLink {
   color: rgba(255, 255, 255, 0.5) !important;
-  font-size: .8em;
+  font-size: 0.8em;
   height: 2em;
   border-bottom: 2px solid transparent;
 }
 
 .secNavLink:hover {
-  color: #F7F7F7 !important;
-  border-bottom: 2px solid #F7F7F7;
+  color: #f7f7f7 !important;
+  border-bottom: 2px solid #f7f7f7;
 }
 
 .navbar-nav {
@@ -83,7 +89,7 @@ body {
 }
 
 .masthead {
-  background-image: url('../img/home.jpg');
+  background-image: url("../img/home.jpg");
   text-align: center;
   color: white;
   background-repeat: no-repeat;
@@ -141,7 +147,8 @@ body {
   min-width: 10em;
 }
 
-.btn-primary:hover, .btn-primary:active {
+.btn-primary:hover,
+.btn-primary:active {
   background-color: rgba(51, 51, 51, 1);
   border-color: #333;
 }
@@ -168,9 +175,9 @@ body {
 
 .numInBag {
   background-color: rgba(51, 51, 51, 1);
-  padding: .5em 1em;
+  padding: 0.5em 1em;
   border-radius: 100%;
-  font-size: .7em;
+  font-size: 0.7em;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,7 +199,6 @@ a {
 a:hover a::selection a:active a:visited {
   color: rgba(51, 51, 51, 0.8) !important;
 }
-
 
 /* .card-subtitle:hover .card-subtitle:visited {
   color: rgba(51, 51, 51, 0.8) !important;
@@ -221,12 +227,12 @@ h3 {
 
 .card {
   width: 100%;
-  margin: .5em;
+  margin: 0.5em;
 }
 
 .card-header {
-  background-color: rgba(51, 51, 51, .9);
-  color: #F7F7F7;
+  background-color: rgba(51, 51, 51, 0.9);
+  color: #f7f7f7;
 }
 
 .clothingItem {
@@ -289,14 +295,50 @@ h3 {
   width: 20em;
 }
 
-@media (min-width:600px) {
+.clothingItemContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  min-width: 80em;
+}
+
+.productDetailImg {
+  height: 320px;
+  width: 320px;
+}
+
+.addToCartForm {
+  display: flex;
+  width: 25%;
+  flex-direction: column;
+  padding: 1em;
+  margin: 0 auto;
+  height: 100%;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
+
+@media (min-width: 600px) {
   .about-img {
     height: 20em;
     width: 30em;
   }
+  .productDetailImg {
+    height: 420px;
+    width: 420px;
+  }
 }
 
-@media (min-width:992px) {
+@media (min-width: 992px) {
   .buttonGroup {
     flex-direction: row;
   }
@@ -308,6 +350,10 @@ h3 {
     display: flex;
     top: 0px;
     margin: 0 auto;
+  }
+  .clothingItemContainer {
+    flex-direction: row;
+    min-width: 20em;
   }
   .clothingItem {
     margin: 1em;
@@ -325,5 +371,12 @@ h3 {
   .content {
     margin: 0;
     margin-left: 1em;
+  }
+  .productDetailImg {
+    height: 520px;
+    width: 520px;
+  }
+  .addToCartForm {
+    margin-top: 5em;
   }
 }
