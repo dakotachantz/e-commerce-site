@@ -35,7 +35,7 @@ const data = {
             productName: "Bowery Standard",
             img: 'https://assets.bespokepost.com/media/W1siZiIsIjIwMTcvMDgvMzAvMjEvMzcvMTAvNGFmNjhjNWEtZDJiZi00OTc3LWE4M2ItYTAyNDA3Njk5OTI3L2NpdGl6ZW4taHVtYW5pdHktZ3JheS1jb3Jkcy0xLmpwZyJdLFsicCIsInRodW1iIiwiNTIweFx1MDAzZSJdLFsicCIsImVuY29kZSIsImpwZyIsIi1xdWFsaXR5IDcxIC1iYWNrZ3JvdW5kICNGNkY0RjQgLWZsYXR0ZW4iXV0/citizen-humanity-gray-cords-1.jpg?sha=b1b2367a92e82430',
             quantity: 50,
-            size: ["28 X 30", "28 X 32", "30 X 30", '30 X 32'],
+            size: ["28", "30", "32"],
             fit: 'Slim Fit'
         },
         {
@@ -44,7 +44,7 @@ const data = {
             productName: "Bowery Standard Salton",
             img: 'https://assets.bespokepost.com/media/W1siZiIsIjIwMTcvMDgvMzAvMjEvNDgvNDMvZDkxNDIxNGMtNTc1Ny00NzlmLWI4MjItNDUwODllZjAxMDNlL2NpdHplbnMtb2YtaHVtYW5pdHktcHYtYm93ZXJ5LTEuanBnIl0sWyJwIiwidGh1bWIiLCI1MjB4XHUwMDNlIl0sWyJwIiwiZW5jb2RlIiwianBnIiwiLXF1YWxpdHkgNzEgLWJhY2tncm91bmQgI0Y2RjRGNCAtZmxhdHRlbiJdXQ/citzens-of-humanity-pv-bowery-1.jpg?sha=064cf229676c343b',
             quantity: 50,
-            size: ["28 X 30", "28 X 32", "30 X 30", '30 X 32'],
+            size: ["28", "30", "32"],
             fit: 'Slim Fit'
         },
         {
@@ -53,7 +53,7 @@ const data = {
             productName: "Bowery Pure Dark Ash",
             img: "https://assets.bespokepost.com/media/W1siZiIsIjIwMTYvMTEvMDgvMTcvMzYvNTIvNjU4L2NpdGl6ZW5famVhbnNfYm93ZXJ5X3B1cmVfc2xpbV9kYXJrX2FzaC5qcGciXSxbInAiLCJ0aHVtYiIsIjUyMHhcdTAwM2UiXSxbInAiLCJlbmNvZGUiLCJqcGciLCItcXVhbGl0eSA3MSAtYmFja2dyb3VuZCAjRjZGNEY0IC1mbGF0dGVuIl1d/citizen-jeans-bowery-pure-slim-dark-ash.jpg?sha=2812946ac7a86668",
             quantity: 50,
-            size: ["28 X 30", "28 X 32", "30 X 30", '30 X 32'],
+            size: ["28", "30", "32"],
             fit: 'Slim Fit'
         }
     ],

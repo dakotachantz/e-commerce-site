@@ -20,8 +20,8 @@ class App extends Component {
               <Route path='/about' component={About} />
               <Route path='/contact' component={Contact} />
               <Route path='/cart' component={Cart} />
-              <Route path='/:category' component={ProductList} />
               <Route path='/:category/:id' component={ProductDetail} />
+              <Route path='/:category' component={ProductList} />
             </Switch>
           </BaseLayout>
         </BrowserRouter>
