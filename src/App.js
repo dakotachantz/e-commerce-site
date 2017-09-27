@@ -15,16 +15,6 @@ class App extends Component {
     this.state = {
       cart: [
         {
-          id: 0,
-          price: 30,
-          productName: "The Staple T-Shirt",
-          img:
-            "https://assets.bespokepost.com/media/W1siZiIsIjIwMTcvMDUvMDUvMjIvMDQvNTkvYWMyOWQ1NDMtOGFhZC00OGJiLTg3ZGQtZjk5NDY3YjI2ZDJlL2JhbmtzLXN0YXBsZS10ZWUtb2ZmLXdoaXRlLmpwZyJdLFsicCIsInRodW1iIiwiNTIweFx1MDAzZSJdLFsicCIsImVuY29kZSIsImpwZyIsIi1xdWFsaXR5IDcxIC1iYWNrZ3JvdW5kICNGNkY0RjQgLWZsYXR0ZW4iXV0/banks-staple-tee-off-white.jpg?sha=49acd3b14c24908d",
-          quantity: 2,
-          size: "Small",
-          color: "Off-White"
-        },
-        {
           id: 6,
           price: 265,
           productName: "The Albion Jacket",
@@ -32,6 +22,7 @@ class App extends Component {
             "https://assets.bespokepost.com/media/W1siZiIsIjIwMTcvMDgvMzAvMTcvMjgvNDIvMDQ1ZjI1MTctOTYzMC00ODhmLWIzZDctNTg2YzNhYzk0YjkwL0dSRUVOIEFMQklPTiAxLmpwZyJdLFsicCIsInRodW1iIiwiNTIweFx1MDAzZSJdLFsicCIsImVuY29kZSIsImpwZyIsIi1xdWFsaXR5IDcxIC1iYWNrZ3JvdW5kICNGNkY0RjQgLWZsYXR0ZW4iXV0/GREEN%20ALBION%201.jpg?sha=4d34c4d2a640df2d",
           quantity: 1,
           size: "Small",
+          selectedSize: "Small",
           color: "Army"
         },
         {
@@ -42,6 +33,7 @@ class App extends Component {
             "https://assets.bespokepost.com/media/W1siZiIsIjIwMTcvMDgvMzAvMjEvNDgvNDMvZDkxNDIxNGMtNTc1Ny00NzlmLWI4MjItNDUwODllZjAxMDNlL2NpdHplbnMtb2YtaHVtYW5pdHktcHYtYm93ZXJ5LTEuanBnIl0sWyJwIiwidGh1bWIiLCI1MjB4XHUwMDNlIl0sWyJwIiwiZW5jb2RlIiwianBnIiwiLXF1YWxpdHkgNzEgLWJhY2tncm91bmQgI0Y2RjRGNCAtZmxhdHRlbiJdXQ/citzens-of-humanity-pv-bowery-1.jpg?sha=064cf229676c343b",
           quantity: 1,
           size: "28",
+          selectedSize: "28",
           fit: "Slim Fit"
         }
       ]
@@ -49,10 +41,37 @@ class App extends Component {
   }
 
   ShoppingCart = props => {
-    return <Cart cartData={this.state.cart} {...props} />;
+    return (
+      <Cart
+        removeFromCart={this.removeFromCart}
+        cartData={this.state.cart}
+        {...props}
+      />
+    );
   };
 
-  addItemToCart = item => {};
+  ProductDetailData = props => {
+    return (
+      <ProductDetail
+        addToCart={this.addToCart}
+        cartData={this.state.cart}
+        {...props}
+      />
+    );
+  };
+
+  addToCart = foundItem => {
+    let savedItem = { ...foundItem };
+    console.log("savedItem: ", savedItem);
+    let { cart } = this.state;
+    cart.push(savedItem);
+    this.setState({ cart }, () => console.log(this.state.cart));
+  };
+
+  removeFromCart = index => {
+    let newCart = this.state.cart.splice(index, 1);
+    this.setState(newCart, () => {});
+  };
   render() {
     return (
       <div className="App">
@@ -63,7 +82,7 @@ class App extends Component {
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/cart" component={this.ShoppingCart} />
-              <Route path="/:category/:id" component={ProductDetail} />
+              <Route path="/:category/:id" component={this.ProductDetailData} />
               <Route path="/:category" component={ProductList} />
             </Switch>
           </BaseLayout>

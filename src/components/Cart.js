@@ -4,18 +4,28 @@ import { Link } from "react-router-dom";
 let cartTotal;
 export default class Cart extends Component {
   componentWillMount() {
+    this.calculateCart();
+  }
+
+  calculateCart = () => {
     let totalsArray = this.props.cartData.map(item => {
       let total = 0;
       return (total += item.price);
     });
     cartTotal = totalsArray.reduce((a, b) => a + b, 0);
-  }
+  };
+  removeFromCart = e => {
+    let target = e.target.getAttribute("data-index");
+    let index = target;
+    this.props.removeFromCart(index);
+    this.calculateCart();
+  };
 
   render() {
     console.log(this.props);
     let cartItems = this.props.cartData.map((item, index) => {
       return (
-        <tr key={item.id}>
+        <tr key={item.id} id={index}>
           <td>
             <Link to="#">
               <img style={{ height: 100 }} src={item.img} alt="White Tee" />
@@ -24,9 +34,13 @@ export default class Cart extends Component {
           <td>
             <Link to="#">{item.productName}</Link>
           </td>
-          <td>{item.size}</td>
+          <td>{item.selectedSize}</td>
           <td>
-            <select className="form-control">
+            <select
+              className="form-control"
+              onChange={this.calculateCart}
+              value={item.quantity}
+            >
               <option default value="1">
                 1
               </option>
@@ -42,15 +56,18 @@ export default class Cart extends Component {
           </td>
           <td>${item.price}</td>
           <td>
-            <Link to="#">
-              <i className="fa fa-trash-o" />
-            </Link>
+            <span>
+              <i
+                onClick={this.removeFromCart}
+                className="fa fa-trash-o"
+                data-index={index}
+              />
+            </span>
           </td>
         </tr>
       );
     });
     return (
-      // TODO: add in real data that is not hard coded.
       <div className="container cart-container">
         <div id="basket">
           <div style={{ display: "flex", flex: 1 }} className="card">
@@ -72,9 +89,8 @@ export default class Cart extends Component {
             </div>
             {/* <!-- /.table-responsive --> */}
           </div>
-          {/* <!-- /.box --> */}
 
-          <div className="">
+          <div>
             <div
               style={{ display: "flex", flex: 1 }}
               className="card"

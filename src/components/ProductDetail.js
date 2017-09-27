@@ -1,34 +1,47 @@
 import React, { Component } from "react";
-// import _ from "lodash";
 import clothes from "../data/data";
-// import { NavLink } from "react-router-dom";
 
 export default class ProductDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      quantity: "1",
+      selectedSize: ""
+    };
+  }
+
+  componentWillMount() {
+    console.log("this.props.cartData: ", this.props.cartData);
   }
 
   handleInputChange = e => {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
+    this.setState(
+      {
+        [e.target.name]: e.target.value
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
   };
+
   addToCart = e => {
     e.preventDefault();
     let { id, category } = this.props.match.params;
     // eslint-disable-next-line
     const foundItem = clothes[category].find(item => item.id === parseInt(id));
-    this.setState({ item: this.state }, () => {
-      console.log(this.state);
-    });
+    // eslint-disable-next-line
+    foundItem.selectedSize = this.state.size = undefined
+      ? this.state.size
+      : foundItem.size[0];
+    foundItem.quantity = this.state.quantity;
+    this.props.addToCart(foundItem);
   };
 
   render() {
     let { id, category } = this.props.match.params;
     // eslint-disable-next-line
     const foundItem = clothes[category].find(item => item.id === parseInt(id));
-    console.log("foundItem: ", foundItem);
     return (
       <div
         className="clothingItem"
@@ -50,8 +63,7 @@ export default class ProductDetail extends Component {
               <p
                 style={{
                   textTransform: "none",
-                  paddingTop: ".5em",
-                  minWidth: "50em"
+                  paddingTop: ".5em"
                 }}
                 className="card-subtitle"
               >
@@ -61,25 +73,14 @@ export default class ProductDetail extends Component {
               </p>
               <span className="text-muted">${foundItem.price}</span>
               <br />
-              <input
-                /* onChange={this.handleInputChange} */
-                type="text"
-                name="productName"
-                value={foundItem.productName}
-              />
-              <input
-                /* onChange={this.handleInputChange} */
-                type="text"
-                name="price"
-                value={foundItem.price}
-              />
               <span>
                 <label>Size:</label>
                 <select
                   onChange={this.handleInputChange}
                   className="form-control"
                   name="size"
-                  value={this.state.size}
+                  value={this.props.size}
+                  required
                 >
                   {foundItem.size.map((selectedSize, index) => {
                     return (
@@ -97,7 +98,7 @@ export default class ProductDetail extends Component {
                   onChange={this.handleInputChange}
                   className="form-control"
                   name="quantity"
-                  value={this.state.quantity}
+                  value={this.props.quantity}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
