@@ -54,9 +54,32 @@ export default class NavBar extends Component {
         </div>
         <span style={{ position: "absolute", right: "1rem", top: "1.3rem" }}>
           <NavLink to="/cart">
-            <i className="fa fa-shopping-bag" aria-hidden="true" />
+            <i
+              className="fa fa-shopping-bag"
+              aria-hidden="true"
+              style={{ fontSize: "1.5em" }}
+            />
           </NavLink>
-          <span className="numInBag">{this.props.cartData.length}</span>
+          <span
+            className="numInBag"
+            style={{
+              backgroundcolor: "rgba(51, 51, 51, 1)",
+              borderRadius: "100%",
+              fontSize: "0.7em",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: 0,
+              width: "100%",
+              padding: "50% 0",
+              position: "absolute",
+              zIndex: "1500",
+              top: "-10px",
+              left: "10px"
+            }}
+          >
+            {this.props.cartData.length}
+          </span>
         </span>
       </nav>
     );
