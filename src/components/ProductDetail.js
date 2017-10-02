@@ -31,9 +31,9 @@ export default class ProductDetail extends Component {
     // eslint-disable-next-line
     const foundItem = clothes[category].find(item => item.id === parseInt(id));
     // eslint-disable-next-line
-    foundItem.selectedSize = this.state.size = undefined
-      ? foundItem.size[0]
-      : this.state.size;
+    foundItem.selectedSize = this.state.selectedSize = ""
+      ? this.state.selectedSize
+      : foundItem.size[0];
     foundItem.quantity = this.state.quantity;
     this.props.addToCart(foundItem);
   };
@@ -79,7 +79,7 @@ export default class ProductDetail extends Component {
                   onChange={this.handleInputChange}
                   className="form-control"
                   name="size"
-                  value={this.props.size}
+                  value={this.state.selectedSize}
                   required
                 >
                   {foundItem.size.map((selectedSize, index) => {
