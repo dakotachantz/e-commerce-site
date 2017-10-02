@@ -32,8 +32,8 @@ export default class ProductDetail extends Component {
     const foundItem = clothes[category].find(item => item.id === parseInt(id));
     // eslint-disable-next-line
     foundItem.selectedSize = this.state.size = undefined
-      ? this.state.size
-      : foundItem.size[0];
+      ? foundItem.size[0]
+      : this.state.size;
     foundItem.quantity = this.state.quantity;
     this.props.addToCart(foundItem);
   };

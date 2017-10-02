@@ -52,11 +52,8 @@ export default class NavBar extends Component {
             </li>
           </ul>
         </div>
-        <span
-          style={{ position: "absolute", right: "1rem", top: "1.3rem" }}
-          className=""
-        >
-          <NavLink className="" to="/cart">
+        <span style={{ position: "absolute", right: "1rem", top: "1.3rem" }}>
+          <NavLink to="/cart">
             <i className="fa fa-shopping-bag" aria-hidden="true" />
           </NavLink>
           <span className="numInBag">{this.props.cartData.length}</span>

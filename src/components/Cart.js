@@ -39,7 +39,7 @@ export default class Cart extends Component {
             <select
               className="form-control"
               onChange={this.calculateCart}
-              value={item.quantity}
+              defaultValue={item.quantity}
             >
               <option default value="1">
                 1
